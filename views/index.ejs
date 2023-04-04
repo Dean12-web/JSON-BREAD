@@ -5,7 +5,96 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>Bread (Browse, Read, Edit, Add, Delete)</h1>
+    <h3>Filters</h3>
+    <div class="container">
+          <div class="row">
+              <div class="col-25">
+                  <label for="id">ID</label>
+              </div>
+              <div class="col-75">
+                  <input type="text" id="id" name="id" placeholder="ID" readonly>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-25">
+                  <label for="string">String</label>
+              </div>
+              <div class="col-75">
+                  <input type="text" id="string" name="string" placeholder="String" readonly>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-25">
+                  <label for="integer">Integer</label>
+              </div>
+              <div class="col-75">
+                  <input type="text" id="integer" name="integer" placeholder="Integer" readonly>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-25">
+                  <label for="float">Float</label>
+              </div>
+              <div class="col-75">
+                  <input type="text" id="float" name="float" placeholder="Float" readonly>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-25">
+                  <label for="date">Date</label>
+              </div>
+              <div class="col-75">
+                <input type="datetime" id="float" name="float" placeholder="start date" readonly>
+                <p>to</p>
+                <input type="datetime" id="float" name="float" placeholder="end date" readonly>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-25">
+                  <label for="boolean">Boolean</label>
+              </div>
+              <div class="col-75">
+                  <select name="boolean" id="boolean">
+                      <option >Choose the boolean...</option>
+                  </select>
+              </div>
+          </div>
+          <div class="row">
+              <button type="submit" value="Save">Search</button>
+          </div>
+    </div>
+    <table id="table">
+      <tr>
+        <th>ID</th>
+        <th>String</th>
+        <th>Integer</th>
+        <th>Float</th>
+        <th>Date</th>
+        <th>Boolean</th>
+        <th>Actions</th>
+      </tr>
+      <% data.forEach((item)=> { %>
+        <tr>
+            <td><%= item.id %></td>
+            <td><%= item.string%></td>
+            <td><%= item.integer%></td>
+            <td><%= item.float%></td>
+            <td><%= item.date%></td>
+            <td><%= item.boolean%></td>
+            <td><a class="button button-succes" href="/edit/<%= item.id %>">Edit</a>&nbsp;<a class="button button-danger" href="/delete/<%= item.id %>">Delete</a></td>
+        </tr>
+        <%}) %>
+    </table>
+    <br>
+    <div class="pagination">
+      <a href="#">Previous</a>
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">Next</a>
+    </div>
+    <br>
+    <a class="button button-primary" href="/add">Add</a>
   </body>
 </html>

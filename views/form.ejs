@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <form action="" method="post">
+        <label for="id">ID</label>
+        <input type="text" id="id" name="id" placeholder="ID" value="<%= item.id %>" <%=item.id ? 'readonly' : '' %>>
+        <br>
+        <label for="string">String</label>
+        <input type="text" id="string" name="string" placeholder="String" value="<%= item.string  %>">
+        <br>
+        <label for="integer">Integer</label>
+        <input type="text" id="integer" name="integer" placeholder="Integer" value="<%= item.integer  %>">
+        <br>
+        <label for="float">Float</label>
+        <input type="text" id="float" name="float" placeholder="Float" value="<%= item.float  %>">
+        <br>
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" placeholder="Date" value="<%= item.date  %>">
+        <br>
+        <label for="boolean">Boolean</label>
+        <select name="boolean" id="boolean">
+            <option disabled>Choose the boolean...</option>
+            <option value="true" <%=item.boolean=="True" ? 'selected' : '' %>>True</option>
+            <option value="false" <%=item.boolean=="False" ? 'selected' : '' %>>False</option>
+        </select>
+        <button type="submit">Simpan</button>
+    </form>
+    <a href="/">Kembali</a>
+</body>
+
+</html>

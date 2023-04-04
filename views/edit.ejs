@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <div class="container">
+        <form action="" method="post">
+            <div class="row">
+                <div class="col-25">
+                    <label for="id">ID</label>
+                </div>
+                <div class="col-75">
+                    <input style="background-color: rgb(232, 235, 239);" type="text" id="id" name="id" placeholder="ID"
+                        value="<%= item.id %>" <%=item.id ? 'readonly' : '' %>>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="string">String</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="string" name="string" placeholder="String" value="<%= item.string  %>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="integer">Integer</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="integer" name="integer" placeholder="Integer" value="<%= item.integer  %>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="float">Float</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="float" name="float" placeholder="Float" value="<%= item.float  %>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="date">Date</label>
+                </div>
+                <div class="col-75">
+                    <input type="date" id="date" name="date" placeholder="Date" value="<%= item.date  %>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="boolean">Boolean</label>
+                </div>
+                <div class="col-75">
+                    <select name="boolean" id="boolean">
+                        <option disabled>Choose the boolean...</option>
+                        <option value="true" <%=item.boolean=="True" ? 'selected' : '' %>>True</option>
+                        <option value="false" <%=item.boolean=="False" ? 'selected' : '' %>>False</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit">Update</button>
+                <a class="button button-succes" href="/">Back</a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
