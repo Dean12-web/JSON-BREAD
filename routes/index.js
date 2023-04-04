@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/add', function (req, res, next) {
-  res.render('add', { title: 'Add Data' })
+  res.render('add', { title: 'Add Data', item: {} })
 })
 
 router.post('/add', (req, res) => {
