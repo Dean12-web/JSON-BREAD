@@ -16,22 +16,26 @@ router.get('/add', function (req, res, next) {
 })
 
 router.post('/add', (req, res) => {
-  const id = parseInt(req.body.id)
-  const string = req.body.string
-  const integer = parseInt(req.body.integer)
-  const float = parseFloat(req.body.float)
-  const date = req.body.date ? indonesianMonthString(req.body.date) : ("Kosong")
-  const boolean = req.body.boolean
-  data.push({
-    "id": id,
-    "string": string,
-    "integer": integer,
-    "float": float,
-    "date": date,
-    "boolean": boolean
-  })
-  fs.writeFileSync('data.json', JSON.stringify(data, null, 4))
-  res.redirect('/')
+  if (req.body.id === '') {
+    res.status(400).send('Error: Data is empty. Cannot upload.');
+  } else {
+    const id = parseInt(req.body.id)
+    const string = req.body.string
+    const integer = parseInt(req.body.integer)
+    const float = parseFloat(req.body.float)
+    const date = req.body.date ? indonesianMonthString(req.body.date) : ("Kosong")
+    const boolean = req.body.boolean
+    data.push({
+      "id": id,
+      "string": string,
+      "integer": integer,
+      "float": float,
+      "date": date,
+      "boolean": boolean
+    })
+    fs.writeFileSync('data.json', JSON.stringify(data, null, 4))
+    res.redirect('/')
+  }
 })
 
 router.get('/edit/:id', (req, res) => {
@@ -61,7 +65,7 @@ router.post('/edit/:id', (req, res) => {
     if (data[i].id == id) {
       data[i].string = string
       data[i].integer = integer
-      data[i].float =float
+      data[i].float = float
       data[i].boolean = boolean
       data[i].date = date
     }
@@ -70,15 +74,15 @@ router.post('/edit/:id', (req, res) => {
   res.redirect('/');
 })
 
-router.get('/delete/:id', (req,res)=>{
+router.get('/delete/:id', (req, res) => {
   const id = req.params.id;
   let indexDelete = '';
-  for (let i=0;i<data.length;i++) {
-      if (data[i].id == id) {
-          indexDelete = i;
-      }
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].id == id) {
+      indexDelete = i;
+    }
   }
-  data.splice(indexDelete,1);
+  data.splice(indexDelete, 1);
   fs.writeFileSync('data.json', JSON.stringify(data, null, 4));
   res.redirect('/');
 })
